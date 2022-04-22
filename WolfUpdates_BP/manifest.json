@@ -1,0 +1,18 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Mob Updates - Behavior!",
+		"description": "Mob Updates!",
+		"uuid": "d9b84908-e8f7-47ad-85ca-9c736d102328",
+		"version": [1,0,0],
+		"min_engine_version": [1,16,0]
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"uuid": "8ac6d4de-4705-4259-b820-53d2acb15dc2",
+			"type": "data",
+			"version": [1,0,0]
+		}
+	]
+}
