@@ -1,18 +1,24 @@
 {
 	"format_version": 2,
 	"header": {
-		"name": "Mob Updates - Behavior!",
-		"description": "Mob Updates!",
-		"uuid": "d9b84908-e8f7-47ad-85ca-9c736d102328",
-		"version": [1,0,0],
+		"name": "Wolf Updates - v1.0.3!",
+		"description": "Wolf Updates!",
+		"uuid": "efc167f1-6172-44d0-8e6e-ef2c43080aa4",
+		"version": [1,0,3],
 		"min_engine_version": [1,16,0]
 	},
 	"modules": [
 		{
 			"description": "Behavior",
-			"uuid": "8ac6d4de-4705-4259-b820-53d2acb15dc2",
+			"uuid": "4f9491a8-d949-4116-a04c-b780c8a9e552",
 			"type": "data",
-			"version": [1,0,0]
+			"version": [1,0,3]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "cf6732ee-6a03-4717-b468-8cbe6da35510",
+			"version": [1,0,3]
 		}
 	]
 }

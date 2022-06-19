@@ -1,0 +1,62 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.wolf.load": {
+			"initial_state": "loaded",
+			"states": {
+				"loaded": {
+					/*"on_entry": [
+						"/say loaded"
+					],*/
+					"transitions": [
+						{
+							"spawn_bark_baby": "query.is_baby"
+						},
+						{
+							"spawn_bark": "query.variant != 10"
+						},
+						{
+							"spawn_howl": "query.variant == 10"
+						}
+					]
+				},
+
+				"spawn_bark_baby": {
+					"on_entry": [
+						//"/say bark",
+						"/playsound mob.wolf.bark @a ^0 ^0 ^0 1 2"
+					],
+					"transitions": [
+						{
+							"loaded": "0"
+						}
+					]
+				},
+
+				"spawn_bark": {
+					"on_entry": [
+						//"/say bark",
+						"/playsound mob.wolf.bark @a"
+					],
+					"transitions": [
+						{
+							"loaded": "0"
+						}
+					]
+				},
+
+				"spawn_howl": {
+					"on_entry": [
+						//"/say howl",
+						"/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1"
+					],
+					"transitions": [
+						{
+							"loaded": "0"
+						}
+					]
+				}
+			}
+		}
+	}
+}

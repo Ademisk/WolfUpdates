@@ -1,0 +1,18 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Wolf Updates - v1.0.3",
+		"description": "Wolfie buffs",
+		"uuid": "cf6732ee-6a03-4717-b468-8cbe6da35510",
+		"version": [1,0,3],
+		"min_engine_version": [1,18,10]
+	},
+	"modules": [
+		{
+			"description": "Resources",
+			"uuid": "b285bdc7-e339-45a4-ae29-ff9c7a750a59",
+			"type": "resources",
+			"version": [1,0,3]
+		}
+	]
+}
