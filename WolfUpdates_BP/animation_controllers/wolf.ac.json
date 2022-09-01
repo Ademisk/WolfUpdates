@@ -1,62 +1,502 @@
 {
-	"format_version": "1.10.0",
-	"animation_controllers": {
-		"controller.animation.wolf.load": {
-			"initial_state": "loaded",
-			"states": {
-				"loaded": {
-					/*"on_entry": [
-						"/say loaded"
-					],*/
-					"transitions": [
-						{
-							"spawn_bark_baby": "query.is_baby"
-						},
-						{
-							"spawn_bark": "query.variant != 10"
-						},
-						{
-							"spawn_howl": "query.variant == 10"
-						}
-					]
-				},
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    //==========================================================
+    //
+    // Default Controller
+    //
+    //==========================================================
+    "controller.animation.wolf.load": {
+      "initial_state": "loaded",
+      "states": {
+        "loaded": {
+          "transitions": [
+            {
+              "spawn_bark_baby": "query.is_baby"
+            },
+            {
+              "spawn_1_0": "query.variant == 100"
+            },
+            {
+              "spawn_1_2": "query.variant == 102"
+            },
+            {
+              "spawn_1_4": "query.variant == 104"
+            },
+            {
+              "spawn_1_6": "query.variant == 106"
+            },
+            {
+              "spawn_1_8": "query.variant == 108"
+            },
+            {
+              "spawn_2_0": "query.variant == 110"
+            }
+          ]
+        },
 
-				"spawn_bark_baby": {
-					"on_entry": [
-						//"/say bark",
-						"/playsound mob.wolf.bark @a ^0 ^0 ^0 1 2"
-					],
-					"transitions": [
-						{
-							"loaded": "0"
-						}
-					]
-				},
+        "spawn_bark_baby": {
+          "on_entry": [
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 2"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
 
-				"spawn_bark": {
-					"on_entry": [
-						//"/say bark",
-						"/playsound mob.wolf.bark @a"
-					],
-					"transitions": [
-						{
-							"loaded": "0"
-						}
-					]
-				},
+        "spawn_1_0": {
+          "on_entry": [
+            "/say Size 1_0",
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
 
-				"spawn_howl": {
-					"on_entry": [
-						//"/say howl",
-						"/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1"
-					],
-					"transitions": [
-						{
-							"loaded": "0"
-						}
-					]
-				}
-			}
-		}
-	}
+        "spawn_1_2": {
+          "on_entry": [
+            "/say Size 1_2",
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
+
+        "spawn_1_4": {
+          "on_entry": [
+            "/say Size 1_4",
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
+
+        "spawn_1_6": {
+          "on_entry": [
+            "/say Size 1_6",
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
+
+        "spawn_1_8": {
+          "on_entry": [
+            "/say Size 1_8",
+            "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        },
+
+        "spawn_2_0": {
+          "on_entry": [
+            "/say Size 2_0",
+            "/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1"
+          ],
+          "transitions": [
+            {
+              "loaded": "0"
+            }
+          ]
+        }
+      }
+    },
+
+
+
+
+
+
+    //==========================================================
+    //
+    // Breeding Controller
+    //
+    //==========================================================
+    "controller.animation.wolf_breeding.load": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "entering_love_state": "query.is_in_love"
+            }
+          ]
+        },
+
+        "entering_love_state": {
+          "transitions": [
+            {
+              "send_event_var_1_0": "query.variant == 100"
+            },
+            {
+              "send_event_var_1_2": "query.variant == 102"
+            },
+            {
+              "send_event_var_1_4": "query.variant == 104"
+            },
+            {
+              "send_event_var_1_6": "query.variant == 106"
+            },
+            {
+              "send_event_var_1_8": "query.variant == 108"
+            },
+            {
+              "send_event_var_2_0": "query.variant == 110"
+            }
+          ]
+        },
+
+        "send_event_var_1_0": {
+          "on_entry": [
+            "/say send_event var 1_0!",
+            "/event entity @s max:eEnter_love_state_as_var_1_0"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+        "send_event_var_1_2": {
+          "on_entry": [
+            "/say send_event var 1_2!",
+            "/event entity @s max:eEnter_love_state_as_var_1_2"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+        "send_event_var_1_4": {
+          "on_entry": [
+            "/say send_event var 1_4!",
+            "/event entity @s max:eEnter_love_state_as_var_1_4"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+        "send_event_var_1_6": {
+          "on_entry": [
+            "/say send_event var 1_6!",
+            "/event entity @s max:eEnter_love_state_as_var_1_6"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+        "send_event_var_1_8": {
+          "on_entry": [
+            "/say send_event var 1_8!",
+            "/event entity @s max:eEnter_love_state_as_var_1_8"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+        "send_event_var_2_0": {
+          "on_entry": [
+            "/say send_event var 2_0!",
+            "/event entity @s max:eEnter_love_state_as_var_2_0"
+          ],
+          "transitions": [
+            {
+              "love_state": "1"
+            }
+          ]
+        },
+
+        "love_state": {
+          "on_entry": [
+            "/tag @s add wolfLoveState"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "received_var_1_0": "query.mark_variant == 100"   //this variety for documentation purposes
+            },
+            {
+              "received_var_1_2": "query.mark_variant == 102"
+            },
+            {
+              "received_var_1_4": "query.mark_variant == 104"
+            },
+            {
+              "received_var_1_6": "query.mark_variant == 106"
+            },
+            {
+              "received_var_1_8": "query.mark_variant == 108"
+            },
+            {
+              "received_var_2_0": "query.mark_variant == 110"
+            }
+          ]
+        },
+
+        "exit_love_state": {
+          "on_entry": [
+            "/say exit_love_state",
+            "/tag @s remove wolfLoveState",
+            "/tag @s remove receivedMarkVar",
+            "/event entity @s max:eLeave_love_state"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        },
+
+        "received_var_1_0": {
+          "on_entry": [
+            "/say received var 1_0!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+        "received_var_1_2": {
+          "on_entry": [
+            "/say received var 1_2!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+        "received_var_1_4": {
+          "on_entry": [
+            "/say received var 1_4!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+        "received_var_1_6": {
+          "on_entry": [
+            "/say received var 1_6!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+        "received_var_1_8": {
+          "on_entry": [
+            "/say received var 1_8!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+        "received_var_2_0": {
+          "on_entry": [
+            "/say received var 2_0!"
+          ],
+          "transitions": [
+            {
+              "received_variant_love_state": "1"
+            }
+          ]
+        },
+
+        //Received others' variant, is in breeding behavior, but still need to transmit own variant to others
+        "received_variant_love_state": {
+          "on_entry": [
+            "/tag @s add receivedMarkVar"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_0": "query.variant == 100"
+            },
+            {
+              "transmit_var_2": "query.variant == 102"
+            },
+            {
+              "transmit_var_4": "query.variant == 104"
+            },
+            {
+              "transmit_var_6": "query.variant == 106"
+            },
+            {
+              "transmit_var_8": "query.variant == 108"
+            },
+            {
+              "transmit_var_10": "query.variant == 110"
+            }
+          ]
+        },
+
+        "transmit_var_0": {
+          "on_entry": [
+            "/say sending var 1_0",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_0"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_0_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_0_loop": {
+          "transitions": [
+            {
+              "transmit_var_0": "1"
+            }
+          ]
+        },
+
+        "transmit_var_2": {
+          "on_entry": [
+            "/say sending var 1_2",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_2"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_2_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_2_loop": {
+          "transitions": [
+            {
+              "transmit_var_2": "1"
+            }
+          ]
+        },
+
+        "transmit_var_4": {
+          "on_entry": [
+            "/say sending var 1_4",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_4"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_4_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_4_loop": {
+          "transitions": [
+            {
+              "transmit_var_4": "1"
+            }
+          ]
+        },
+
+        "transmit_var_6": {
+          "on_entry": [
+            "/say sending var 1_6",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_6"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_6_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_6_loop": {
+          "transitions": [
+            {
+              "transmit_var_6": "1"
+            }
+          ]
+        },
+
+        "transmit_var_8": {
+          "on_entry": [
+            "/say sending var 1_8",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_8"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_8_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_8_loop": {
+          "transitions": [
+            {
+              "transmit_var_8": "1"
+            }
+          ]
+        },
+
+        "transmit_var_10": {
+          "on_entry": [
+            "/say sending var 2_0",
+            "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_2_0"
+          ],
+          "transitions": [
+            {
+              "exit_love_state": "!query.is_in_love"
+            },
+            {
+              "transmit_var_10_loop": "1"
+            }
+          ]
+        },
+        "transmit_var_10_loop": {
+          "transitions": [
+            {
+              "transmit_var_10": "1"
+            }
+          ]
+        }
+      }
+    }
+  }
 }

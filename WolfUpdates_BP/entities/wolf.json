@@ -7,11 +7,13 @@
       "is_summonable": true,
       "is_experimental": false,
       "animations": {
-        "on_load": "controller.animation.wolf.load"
+        "on_load": "controller.animation.wolf.load",
+        "breeding": "controller.animation.wolf_breeding.load"
       },
       "scripts": {
         "animate": [
-          "on_load"
+          "on_load",
+          "breeding"
         ]
       }
     },
@@ -22,6 +24,13 @@
         },
         "minecraft:scale": {
           "value": 0.5
+        },
+        "minecraft:health": {
+          "value": 10,
+          "max": 10
+        },
+        "minecraft:attack": {
+          "damage": 2
         },
 
         "minecraft:ageable": {
@@ -46,102 +55,356 @@
         }
       },
 
-      "max:wolf_scale_1_0": {
-        "minecraft:variant": {
-          "value": 0
-        },
-        "minecraft:scale": {
-          "value": 1.0
+      //===================================
+      //Addon
+      //===================================
+
+      //Breeding
+      //----------------------
+      "max:cgShare_var_1_0": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_0" }
+              ]
+            }
+          ]
         }
       },
 
-      "max:wolf_scale_1_1": {
-        "minecraft:scale": {
-          "value": 1.1
-        },
+      "max:cgShare_var_1_2": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_2" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgShare_var_1_4": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_4" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgShare_var_1_6": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_6" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgShare_var_1_8": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_8" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgShare_var_2_0": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_2_0" }
+              ]
+            }
+          ]
+        }
+      },
+
+      /*"max:cgLove_state_variant_sharing": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 100},
+                  "event":"max:eRecieve_variant_1_0"
+                },
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 102},
+                  "event":"max:eRecieve_variant_1_2"
+                },
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 104},
+                  "event":"max:eRecieve_variant_1_4"
+                },
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 106},
+                  "event":"max:eRecieve_variant_1_6"
+                },
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 108},
+                  "event":"max:eRecieve_variant_1_8"
+                },
+                {
+                  "filters": {"test":"is_variant", "subject":"self", "value": 110},
+                  "event":"max:eRecieve_variant_2_0"
+                }
+              ]
+            }
+          ]
+        }
+      },*/
+
+      "max:cgMark_var_default": {
+        "minecraft:mark_variant": {
+          "value": 0
+        }
+      },
+
+      "max:cgMark_var_1_0": {
+        "minecraft:mark_variant": {
+          "value": 100
+        }
+      },
+      "max:cgMark_var_1_2": {
+        "minecraft:mark_variant": {
+          "value": 102
+        }
+      },
+      "max:cgMark_var_1_4": {
+        "minecraft:mark_variant": {
+          "value": 104
+        }
+      },
+      "max:cgMark_var_1_6": {
+        "minecraft:mark_variant": {
+          "value": 106
+        }
+      },
+      "max:cgMark_var_1_8": {
+        "minecraft:mark_variant": {
+          "value": 108
+        }
+      },
+      "max:cgMark_var_2_0": {
+        "minecraft:mark_variant": {
+          "value": 110
+        }
+      },
+      //----------------------
+      //----------------------
+
+
+      //Small - Playful
+      "max:wolf_scale_1_0": {
         "minecraft:variant": {
-          "value": 1
+          "value": 100
+        },
+        "minecraft:scale": {
+          "value": 1.0
+        },
+        "minecraft:health": {
+          "value": 20,
+          "max": 20
         }
       },
 
       "max:wolf_scale_1_2": {
+        "minecraft:variant": {
+          "value": 102
+        },
         "minecraft:scale": {
           "value": 1.2
         },
-        "minecraft:variant": {
-          "value": 2
+        "minecraft:health": {
+          "value": 22,
+          "max": 22
         }
       },
 
-      "max:wolf_scale_1_3": {
-        "minecraft:scale": {
-          "value": 1.3
-        },
-        "minecraft:variant": {
-          "value": 3
+      "max:wolf_playful": {
+        "minecraft:attack": {
+          "damage": 4
         }
       },
 
+      //Medium - Helpful
       "max:wolf_scale_1_4": {
+        "minecraft:variant": {
+          "value": 104
+        },
         "minecraft:scale": {
           "value": 1.4
         },
-        "minecraft:variant": {
-          "value": 4
-        }
-      },
-
-      "max:wolf_scale_1_5": {
-        "minecraft:scale": {
-          "value": 1.5
-        },
-        "minecraft:variant": {
-          "value": 5
+        "minecraft:health": {
+          "value": 24,
+          "max": 24
         }
       },
 
       "max:wolf_scale_1_6": {
+        "minecraft:variant": {
+          "value": 106
+        },
         "minecraft:scale": {
           "value": 1.6
         },
-        "minecraft:variant": {
-          "value": 6
+        "minecraft:health": {
+          "value": 26,
+          "max": 26
         }
       },
 
-      "max:wolf_scale_1_7": {
-        "minecraft:scale": {
-          "value": 1.7
-        },
-        "minecraft:variant": {
-          "value": 7
+      "max:wolf_helpful": {
+        "minecraft:attack": {
+          "damage": 4
         }
       },
 
+      //Large (alpha) - Protective
       "max:wolf_scale_1_8": {
+        "minecraft:variant": {
+          "value": 108
+        },
         "minecraft:scale": {
           "value": 1.8
         },
-        "minecraft:variant": {
-          "value": 8
-        }
-      },
-
-      "max:wolf_scale_1_9": {
-        "minecraft:scale": {
-          "value": 1.9
-        },
-        "minecraft:variant": {
-          "value": 9
+        "minecraft:health": {
+          "value": 28,
+          "max": 28
         }
       },
 
       "max:wolf_scale_2_0": {
         "minecraft:variant": {
-          "value": 10
+          "value": 110
         },
         "minecraft:scale": {
           "value": 2.0
+        },
+        "minecraft:health": {
+          "value": 30,
+          "max": 30
+        }
+      },
+
+      "max:wolf_protective": {
+        "minecraft:movement": {
+          "value": 0.3
+        },
+        "minecraft:attack": {
+          "damage": 6
         }
       },
 
@@ -166,14 +429,29 @@
             "range_min": 0.4,
             "range_max": 1.0
           }
+        },
+        "minecraft:boostable": {
+          "speed_multiplier": 4.0,
+          "duration": 3.0,
+          "boost_items": [
+            {
+              "item": "bone",
+              "damage": 1
+            }
+          ]
         }
       },
 
       "max:non_alpha_despawns": {
         "minecraft:despawn": {
           "despawn_from_distance": {}
+        },
+        "minecraft:movement": {
+          "value": 0.3
         }
       },
+      //===================================
+      //===================================
 
       "minecraft:wolf_adult": {
         "minecraft:experience_reward": {
@@ -186,12 +464,13 @@
         "minecraft:breedable": {
           "require_tame": true,
           "require_full_health": true,
+          "breed_cooldown": 1,
           "breeds_with": {
             "mate_type": "minecraft:wolf",
             "baby_type": "minecraft:wolf",
             "breed_event": {
-              "event": "minecraft:entity_born",
-              "target": "baby"
+              "event": "max:breeding_event",
+              "target": "self"
             }
           },
           "breed_items": [
@@ -230,12 +509,6 @@
           "seats": {
             "position": [ 0.0, 0.675, -0.1 ]
           }
-        },
-          "minecraft:behavior.mount_pathing": {
-          "priority": 1,
-          "speed_multiplier": 1.25,
-          "target_dist": 0,
-          "track_target": true
         }
       },
 
@@ -327,21 +600,11 @@
           "seats": {
             "position": [ 0.0, 0.675, -0.1 ]
           }
-        },
-          "minecraft:behavior.mount_pathing": {
-          "priority": 1,
-          "speed_multiplier": 1.25,
-          "target_dist": 0,
-          "track_target": true
         }
       },
 
       "minecraft:wolf_tame": {
         "minecraft:is_tamed": {
-        },
-        "minecraft:health": {
-          "value": 20,
-          "max": 20
         },
         "minecraft:color": {
           "value": 14
@@ -352,11 +615,8 @@
           "start_distance": 10,
           "stop_distance": 2
         },
-        "minecraft:attack": {
-          "damage": 4
-        },
         "minecraft:behavior.breed": {
-          "priority": 2,
+          "priority": 3,
           "speed_multiplier": 1.0
         },
 
@@ -381,9 +641,6 @@
         },
         "minecraft:is_dyeable": {
           "interact_text": "action.interact.dye"
-        },
-        "minecraft:balloonable": {
-          "mass": 0.8
         }
       }
     },
@@ -402,7 +659,10 @@
           "event": "minecraft:on_unleash",
           "target": "self"
         }
-      }, 
+      },
+      "minecraft:balloonable": {
+        "mass": 0.8
+      },
       "minecraft:is_hidden_when_invisible": {
       },
       "minecraft:nameable": {
@@ -418,10 +678,6 @@
         "width": 0.6,
         "height": 0.8
       },
-      "minecraft:health": {
-        "value": 8,
-        "max": 8
-      },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
@@ -430,9 +686,6 @@
             "damage_per_tick": 4
           }
         ]
-      },
-      "minecraft:movement": {
-        "value": 0.3
       },
       "minecraft:navigation.walk": {
         "can_path_over_water": true,
@@ -443,9 +696,6 @@
       "minecraft:jump.static": {
       },
       "minecraft:can_climb": {
-      },
-      "minecraft:attack": {
-        "damage": 4
       },
       "minecraft:healable": {
         "items": [
@@ -526,6 +776,12 @@
       "minecraft:behavior.float": {
         "priority": 0
       },
+      "minecraft:behavior.mount_pathing": {
+        "priority": 1,
+        "speed_multiplier": 1.25,
+        "target_dist": 0,
+        "track_target": true
+      },
       "minecraft:behavior.stay_while_sitting": {
         "priority": 3
       },
@@ -567,12 +823,589 @@
     },
 
     "events": {
+      //==============================
+      //Addon
+      //==============================
+      "max:eRecieve_variant_1_0": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_0"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_2": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_2"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_4": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_4"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_6": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_6"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_8": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_8"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_2_0": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_default",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_2_0"
+          ]
+        }
+      },
+
+      "max:breeding_event": {
+        "sequence": [
+          {
+            //Var 100 combinations: 100-100
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_1_0",
+              "target": "baby"
+            }
+          },
+          {
+            //Var 102 combinations: 
+            //- 100-102 (rounds up)
+            //- 100-104
+            //- 102-100 (rounds up)
+            //- 102-102
+            //- 104-100
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_1_2",
+              "target": "baby"
+            }
+          },
+          {
+            //Var 104 combinations:
+            //- 100-106 (rounds up)
+            //- 100-108
+            //- 102-104 (rounds up)
+            //- 102-106
+            //- 104-102 (rounds up)
+            //- 104-104
+            //- 106-100 (rounds up)
+            //- 106-102
+            //- 108-100
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_1_4",
+              "target": "baby"
+            }
+          },
+          {
+            //Var 106 combinations: 
+            //- 100-110 (rounds up)
+            //- 102-108 (rounds up)
+            //- 102-110
+            //- 104-106 (rounds up)
+            //- 104-108
+            //- 106-104 (rounds up)
+            //- 106-106
+            //- 108-102 (rounds up)
+            //- 108-104
+            //- 110-100 (rounds up)
+            //- 110-102
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 100},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 102},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_1_6",
+              "target": "baby"
+            }
+          },
+          {
+            //Var 108 combinations: 
+            //- 104-110
+            //- 106-108 (rounds up)
+            //- 106-110
+            //- 108-106 (rounds up)
+            //- 108-108
+            //- 110-104 (rounds up)
+            //- 110-106
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 104},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 106},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_1_8",
+              "target": "baby"
+            }
+          },
+          {
+            //Var 110 combinations: 
+            //- 108-110 (rounds up)
+            //- 110-108 (rounds up)
+            //- 110-110
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:become_size_2_0",
+              "target": "baby"
+            }
+          }
+        ]
+      },
+
+
+
+      "max:become_size_1_0": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_1_0",
+            "max:wolf_playful",
+            "max:non_alpha_despawns"
+          ]
+        }
+      },
+
+      "max:become_size_1_2": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_1_2",
+            "max:wolf_playful",
+            "max:non_alpha_despawns"
+          ]
+        }
+      },
+
+      "max:become_size_1_4": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_1_4",
+            "max:wolf_helpful",
+            "max:non_alpha_despawns"
+          ]
+        }
+      },
+
+      "max:become_size_1_6": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_1_6",
+            "max:wolf_helpful",
+            "max:non_alpha_despawns"
+          ]
+        }
+      },
+
+      "max:become_size_1_8": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_1_8",
+            "max:wolf_protective",
+            "max:non_alpha_despawns"
+          ]
+        }
+      },
+
+      "max:become_size_2_0": {
+        "add": {
+          "component_groups": [
+            "max:wolf_scale_2_0",
+            "max:wolf_protective"
+          ]
+        }
+      },
+
+
+      "max:eEnter_love_state_as_var_1_0": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_0"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_1_2": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_2"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_1_4": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_4"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_1_6": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_6"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_1_8": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_8"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_2_0": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_2_0"
+          ]
+        }
+      },
+
+      "max:eLeave_love_state": {
+        "remove": {
+          "component_groups": [
+            "max:cgShare_var_1_0",
+            "max:cgShare_var_1_2",
+            "max:cgShare_var_1_4",
+            "max:cgShare_var_1_6",
+            "max:cgShare_var_1_8",
+            "max:cgShare_var_2_0",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_default"
+          ]
+        }
+      },
+
+
+
       "minecraft:entity_spawned": {
         "randomize": [
           {
-            "weight": 1,
+            "weight": 0,
             "add": {
               "component_groups": [
+                "max:cgMark_var_default",
                 "minecraft:wolf_baby",
                 "minecraft:wolf_wild",
                 "max:non_alpha_despawns"
@@ -585,7 +1418,8 @@
               {
                 "add": {
                   "component_groups": [
-                    "minecraft:wolf_wild",
+                    "max:cgMark_var_default",
+                    "minecraft:wolf_tame",
                     "minecraft:wolf_adult"
                   ]
                 }
@@ -593,100 +1427,21 @@
               {
                 "randomize": [
                   {
-                    "weight": 89,    //Odds are 89/232
+                    "weight": 1,
                     "add": {
                       "component_groups": [
                         "max:wolf_scale_1_0",
+                        "max:wolf_playful",
                         "max:non_alpha_despawns"
                       ]
                     }
                   },
                   {
-                    "weight": 55,   //Odds are 55/232
+                    "weight": 1,
                     "add": {
                       "component_groups": [
-                        "max:wolf_scale_1_1",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 34,   //Odds are 34/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_2",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 21,   //Odds are 21/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_3",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 13,   //Odds are 13/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_4",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 8,    //Odds are 8/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_5",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 5,    //Odds are 5/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_6",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 3,    //Odds are 3/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_7",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 2,    //Odds are 2/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_8",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,    //Odds are 1/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_1_9",
-                        "max:non_alpha_despawns"
-                      ]
-                    }
-                  },
-                  {
-                    "weight": 1,    //Odds are 1/232
-                    "add": {
-                      "component_groups": [
-                        "max:wolf_scale_2_0"
+                        "max:wolf_scale_2_0",
+                        "max:wolf_protective"
                       ]
                     }
                   }
@@ -698,15 +1453,16 @@
       },
 
       "minecraft:entity_born": {
-        "remove": {
-        },
         "add": {
           "component_groups": [
-            "minecraft:wolf_baby",
+            "max:cgMark_var_default",
+            "minecraft:wolf_adult",
             "minecraft:wolf_tame"
           ]
         }
       },
+      //================================
+      //================================
 
       "minecraft:ageable_grow_up": {
         "remove": {
@@ -749,7 +1505,7 @@
             }
           },
           {
-            "filters": {"test": "is_variant", "value": 10},
+            "filters": {"test": "is_variant", "value": 110},
             "add": {
               "component_groups": [
                 "max:alpha_can_be_ridden"

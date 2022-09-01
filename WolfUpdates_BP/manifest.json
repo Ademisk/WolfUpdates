@@ -1,24 +1,24 @@
 {
 	"format_version": 2,
 	"header": {
-		"name": "Wolf Updates - v1.0.3!",
+		"name": "Wolf Updates - v1.0.5!",
 		"description": "Wolf Updates!",
-		"uuid": "efc167f1-6172-44d0-8e6e-ef2c43080aa4",
-		"version": [1,0,3],
+		"uuid": "82c7ba5c-0c6f-44c1-a9bc-7b1a5ebc90ef",
+		"version": [1,0,5],
 		"min_engine_version": [1,16,0]
 	},
 	"modules": [
 		{
 			"description": "Behavior",
-			"uuid": "4f9491a8-d949-4116-a04c-b780c8a9e552",
+			"uuid": "cdd94fa5-649d-4353-955a-a8918b40f9de",
 			"type": "data",
-			"version": [1,0,3]
+			"version": [1,0,5]
 		}
 	],
 	"dependencies": [
 		{
-			"uuid": "cf6732ee-6a03-4717-b468-8cbe6da35510",
-			"version": [1,0,3]
+			"uuid": "99218505-cd9f-4176-9de2-00406062748f",
+			"version": [1,0,5]
 		}
 	]
 }
