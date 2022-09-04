@@ -37,18 +37,19 @@
 
         "spawn_bark_baby": {
           "on_entry": [
+            //"/say Size 'Baby'",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 2"
           ],
           "transitions": [
             {
-              "loaded": "0"
+              "loaded": "!query.is_baby"
             }
           ]
         },
 
         "spawn_1_0": {
           "on_entry": [
-            "/say Size 1_0",
+            //"/say Size 1_0",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
           ],
           "transitions": [
@@ -60,7 +61,7 @@
 
         "spawn_1_2": {
           "on_entry": [
-            "/say Size 1_2",
+            //"/say Size 1_2",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
           ],
           "transitions": [
@@ -72,7 +73,7 @@
 
         "spawn_1_4": {
           "on_entry": [
-            "/say Size 1_4",
+            //"/say Size 1_4",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
           ],
           "transitions": [
@@ -84,7 +85,7 @@
 
         "spawn_1_6": {
           "on_entry": [
-            "/say Size 1_6",
+            //"/say Size 1_6",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
           ],
           "transitions": [
@@ -96,7 +97,7 @@
 
         "spawn_1_8": {
           "on_entry": [
-            "/say Size 1_8",
+            //"/say Size 1_8",
             "/playsound mob.wolf.bark @a ^0 ^0 ^0 1 1"
           ],
           "transitions": [
@@ -108,7 +109,7 @@
 
         "spawn_2_0": {
           "on_entry": [
-            "/say Size 2_0",
+            //"/say Size 2_0",
             "/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1"
           ],
           "transitions": [
@@ -166,7 +167,7 @@
 
         "send_event_var_1_0": {
           "on_entry": [
-            "/say send_event var 1_0!",
+            //"/say send_event var 1_0!",
             "/event entity @s max:eEnter_love_state_as_var_1_0"
           ],
           "transitions": [
@@ -177,7 +178,7 @@
         },
         "send_event_var_1_2": {
           "on_entry": [
-            "/say send_event var 1_2!",
+            //"/say send_event var 1_2!",
             "/event entity @s max:eEnter_love_state_as_var_1_2"
           ],
           "transitions": [
@@ -188,7 +189,7 @@
         },
         "send_event_var_1_4": {
           "on_entry": [
-            "/say send_event var 1_4!",
+            //"/say send_event var 1_4!",
             "/event entity @s max:eEnter_love_state_as_var_1_4"
           ],
           "transitions": [
@@ -199,7 +200,7 @@
         },
         "send_event_var_1_6": {
           "on_entry": [
-            "/say send_event var 1_6!",
+            //"/say send_event var 1_6!",
             "/event entity @s max:eEnter_love_state_as_var_1_6"
           ],
           "transitions": [
@@ -210,7 +211,7 @@
         },
         "send_event_var_1_8": {
           "on_entry": [
-            "/say send_event var 1_8!",
+            //"/say send_event var 1_8!",
             "/event entity @s max:eEnter_love_state_as_var_1_8"
           ],
           "transitions": [
@@ -221,7 +222,7 @@
         },
         "send_event_var_2_0": {
           "on_entry": [
-            "/say send_event var 2_0!",
+            //"/say send_event var 2_0!",
             "/event entity @s max:eEnter_love_state_as_var_2_0"
           ],
           "transitions": [
@@ -262,7 +263,7 @@
 
         "exit_love_state": {
           "on_entry": [
-            "/say exit_love_state",
+            //"/say exit_love_state",
             "/tag @s remove wolfLoveState",
             "/tag @s remove receivedMarkVar",
             "/event entity @s max:eLeave_love_state"
@@ -275,9 +276,9 @@
         },
 
         "received_var_1_0": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 1_0!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -285,9 +286,9 @@
           ]
         },
         "received_var_1_2": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 1_2!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -295,9 +296,9 @@
           ]
         },
         "received_var_1_4": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 1_4!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -305,9 +306,9 @@
           ]
         },
         "received_var_1_6": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 1_6!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -315,9 +316,9 @@
           ]
         },
         "received_var_1_8": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 1_8!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -325,9 +326,9 @@
           ]
         },
         "received_var_2_0": {
-          "on_entry": [
+          /*"on_entry": [
             "/say received var 2_0!"
-          ],
+          ],*/
           "transitions": [
             {
               "received_variant_love_state": "1"
@@ -367,7 +368,7 @@
 
         "transmit_var_0": {
           "on_entry": [
-            "/say sending var 1_0",
+            //"/say sending var 1_0",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_0"
           ],
           "transitions": [
@@ -389,7 +390,7 @@
 
         "transmit_var_2": {
           "on_entry": [
-            "/say sending var 1_2",
+            //"/say sending var 1_2",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_2"
           ],
           "transitions": [
@@ -411,7 +412,7 @@
 
         "transmit_var_4": {
           "on_entry": [
-            "/say sending var 1_4",
+            //"/say sending var 1_4",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_4"
           ],
           "transitions": [
@@ -433,7 +434,7 @@
 
         "transmit_var_6": {
           "on_entry": [
-            "/say sending var 1_6",
+            //"/say sending var 1_6",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_6"
           ],
           "transitions": [
@@ -455,7 +456,7 @@
 
         "transmit_var_8": {
           "on_entry": [
-            "/say sending var 1_8",
+            //"/say sending var 1_8",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_1_8"
           ],
           "transitions": [
@@ -477,7 +478,7 @@
 
         "transmit_var_10": {
           "on_entry": [
-            "/say sending var 2_0",
+            //"/say sending var 2_0",
             "/event entity @e[family=wolf,tag=wolfLoveState,tag=!receivedMarkVar] max:eRecieve_variant_2_0"
           ],
           "transitions": [
