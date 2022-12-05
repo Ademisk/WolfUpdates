@@ -110,7 +110,8 @@
         "spawn_2_0": {
           "on_entry": [
             //"/say Size 2_0",
-            "/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1"
+            "/playsound mob.wolf.howl @a ^0 ^0 ^0 4 1",
+            "/tag @s add alpha"
           ],
           "transitions": [
             {
@@ -498,6 +499,277 @@
           ]
         }
       }
-    }
+    },
+
+
+    //Riding controller
+    "controller.animation.wolf.riding": {
+      "initial_state": "untamed",
+      "states": {
+        "untamed": {
+          "transitions": [
+            {
+              "standing": "query.is_tamed && query.variant == 110"
+            }
+          ]
+        },
+
+        "standing": {
+          "on_entry": [
+            "/event entity @s max:eStandingControls",
+            "/event entity @s max:eStandingSeating",
+            "/event entity @s max:eHas_no_rider",
+            "/ride @s evict_riders"/*,                  //on sit and stand, evict riders
+            "/say Standing - no rider!"*/
+          ],
+          "transitions": [
+            {
+              "standing_with_rider": "query.has_rider"
+            },
+            {
+              "sitting": "query.is_sitting"
+            }
+          ]
+        },
+
+        "standing_with_rider": {
+          "on_entry": [
+            "/event entity @s max:eHas_rider"/*,
+            "/say Standing - rider!"*/
+          ],
+          "transitions": [
+            {
+              "standing": "!query.has_rider"
+            },
+            {
+              "sprint_mode_with_rider": "query.is_sprinting"
+            },
+            {
+              "sitting": "query.is_sitting"
+            }
+          ]
+        },
+
+        "sprint_mode_with_rider": {
+          "on_entry": [
+            "/clear @p bone 0 1"/*,     //Use up 1 item for the boost effect
+            "/say Sprint Mode - rider!"*/
+          ],
+          "transitions": [
+            {
+              "standing_with_rider": "!query.is_sprinting"
+            },
+            {
+              "sprinting_with_rider": "query.ground_speed >= 25"
+            },
+            {
+              "sprint_mode_no_rider": "!query.has_rider"
+            },
+            {
+              "sprint_mode_sitting": "query.is_sitting"
+            }
+          ]
+        },
+
+        "sprint_mode_no_rider": {
+          "on_entry": [
+            /*"/say Sprint Mode - no rider!",*/
+            "@s max:eSprint_mode_no_rider_remove_movement" 
+          ],
+          "transitions": [
+            {
+              "standing": "!query.is_sprinting"
+            },
+            {
+              "sprint_mode_with_rider": "query.has_rider"
+            },
+            {
+              "sprint_mode_sitting": "query.is_sitting"
+            }
+          ],
+          "on_exit": [
+            "@s max:eSprint_mode_no_rider_return_movement"
+          ]
+        },
+
+        "sprint_mode_sitting": {
+          "on_entry": [
+            //"/say Sitting - sprint mode!",    //should be unrideable in this state
+            "@s max:eSitting_in_sprint_mode_no_seating",
+            "/ride @s evict_riders"
+          ],
+          "transitions": [
+            {
+              "sitting": "!query.is_sprinting"
+            },
+            {
+              "sprint_mode_no_rider": "!query.is_sitting"
+            }
+          ],
+          "on_exit": [
+            "@s max:eSitting_in_sprint_mode_return_seating"
+          ]
+        },
+
+        "sprinting_with_rider": {
+          "on_entry": [
+            "@s max:eSprinting",
+            "/event entity @p max:eSet_rider_sprinting_pose"/*,
+            "/say Sprinting - rider!"*/
+          ],
+          "transitions": [
+            {
+              "standing": "!query.has_rider"
+            },
+            {
+              "standing_with_rider": "!query.is_sprinting || query.ground_speed < 25"
+            }
+          ],
+          "on_exit": [
+            "@s max:eNot_sprinting",
+            "/event entity @p max:eRemove_rider_sprinting_pose"
+          ]
+        },
+
+        "sitting": {
+          "on_entry": [
+            "/event entity @s max:eSittingControls",
+            "/event entity @s max:eSittingSeating",
+            "/event entity @s max:eHas_no_rider",
+            "/ride @s evict_riders"/*,                  //on sit and stand, evict riders
+            "/say Sitting - no rider!"*/
+          ],
+          "transitions": [
+            {
+              "sitting_with_rider": "query.has_rider"
+            },
+            {
+              "standing": "!query.is_sitting"
+            }
+          ]
+        },
+
+        "sitting_with_rider": {
+          "on_entry": [
+            "/event entity @s max:eHas_rider"/*,
+            "/say Sitting - rider!"*/
+          ],
+          "transitions": [
+            {
+              "scoot_mode_with_rider_decrement_boost": "query.is_sprinting"
+            },
+            {
+              "sitting": "!query.has_rider"
+            },
+            {
+              "standing": "!query.is_sitting"
+            }
+          ]
+        },
+
+        "scoot_mode_with_rider_decrement_boost": {
+          "on_entry": [
+            "/clear @p rotten_flesh 0 1"
+          ],
+          "transitions": [
+            {
+              "scoot_mode_with_rider": "1"
+            }
+          ]
+        },
+
+        "scoot_mode_with_rider": {
+          "on_entry": [
+            //"/say Scoot mode - rider!",
+            "/event entity @s max:eScoot_mode"
+          ],
+          "transitions": [
+            {
+              "scooting_with_rider": "query.ground_speed >= 4"
+            },
+            {
+              "remove_scoot_mode_to_sitting_with_rider": "!query.is_sprinting"
+            },
+            {
+              "scoot_mode_no_rider": "!query.has_rider"
+            }
+          ]
+        },
+
+        "scooting_with_rider": {
+          "on_entry": [
+            "/event entity @s max:eScoot_mode_scooting"/*,
+            "/say Scooting - rider!"*/
+          ],
+          "transitions": [
+            {
+              "scoot_mode_no_rider": "!query.has_rider"
+            },
+            {
+              "remove_scoot_mode_to_sitting_with_rider": "!query.is_sprinting"
+            },
+            {
+              "scoot_mode_with_rider": "query.ground_speed < 4"
+            }
+          ],
+          "on_exit": [
+            "/event entity @s max:eScoot_mode_not_scooting"/*,
+            "/say Not scooting - rider!"*/
+          ]
+        },
+
+        "scoot_mode_no_rider": {
+          "on_entry": [
+            //"/say Scooting - no rider!",
+            "/event entity @s max:eScoot_mode_no_rider_remove_movement"
+          ],
+          "transitions": [
+            {
+              "end_scoot_mode_to_sitting": "!query.is_sprinting" 
+            },
+            {
+              "return_movement_to_scoot_mode_with_rider": "query.has_rider"
+            }
+          ]
+        },
+
+        "end_scoot_mode_to_sitting": {
+          "on_entry": [
+            "/event entity @s max:eNot_scoot_mode"
+          ],
+          "transitions": [
+            {
+              "sitting": "1"
+            }
+          ]
+        },
+
+        "return_movement_to_scoot_mode_with_rider": {
+          "on_entry": [
+            "/event entity @s max:eScoot_mode_no_rider_return_movement"
+          ],
+          "transitions": [
+            {
+              "scoot_mode_with_rider": "1"
+            }
+          ]
+        },
+
+        "remove_scoot_mode_to_sitting_with_rider": {
+          "on_entry": [
+            //"/say Not scoot mode - rider!",
+            "/event entity @s max:eNot_scoot_mode"
+          ],
+          "transitions": [
+            {
+              "sitting_with_rider": "1"
+            }
+          ]
+        }
+
+      }  
+    },
+
+
   }
 }

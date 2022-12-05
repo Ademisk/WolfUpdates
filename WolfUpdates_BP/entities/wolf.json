@@ -7,13 +7,15 @@
       "is_summonable": true,
       "is_experimental": false,
       "animations": {
-        "on_load": "controller.animation.wolf.load",
-        "breeding": "controller.animation.wolf_breeding.load"
+        "default": "controller.animation.wolf.load",
+        "breeding": "controller.animation.wolf_breeding.load",
+        "riding": "controller.animation.wolf.riding"
       },
       "scripts": {
         "animate": [
-          "on_load",
-          "breeding"
+          "default",
+          "breeding",
+          "riding"
         ]
       }
     },
@@ -151,8 +153,7 @@
             "porkchop",
             "cooked_porkchop",
             "rabbit",
-            "cooked_rabbit",
-            "rotten_flesh"
+            "cooked_rabbit"
           ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
@@ -226,37 +227,153 @@
         }
       },
 
-      "max:alpha_can_be_ridden": {
+
+      //-------------------------
+      //Wolf riding
+      //-------------------------
+
+      //Standing - Controls
+      "max:cgAlpha_standing_ride_controls": {
+        "minecraft:input_ground_controlled": {
+        },
+        "minecraft:behavior.player_ride_tamed": {
+        },
+        "minecraft:can_power_jump": {
+        },
+        "minecraft:horse.jump_strength": {
+          "value": 0.5
+        },
+        "minecraft:boostable": {
+          "speed_multiplier": 2.0,
+          "duration": 10.0,
+          "boost_items": [
+            {
+              "item": "bone"
+            }
+          ]
+        }
+      },
+
+      //Standing - Seating
+      "max:cgAlpha_standing_ride_seating": {
         "minecraft:rideable": {
           "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
           "family_types": [
             "player"
           ],
           "seats": {
             "position": [ -0.06, 0.675, -0.1 ]
           }
-        },
-        "minecraft:input_ground_controlled": {
-        },
-        "minecraft:can_power_jump": {
-        },
-        "minecraft:behavior.player_ride_tamed": {
-        },
-        "minecraft:horse.jump_strength": {
-          "value": {
-            "range_min": 0.5,
-            "range_max": 1.0
+        }
+      },
+
+      //Standing - Sprint Seating
+      "max:cgAlpha_sprinting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.575, -0.1 ]
           }
-        },
+        }
+      },
+
+
+      //Sitting - Controls
+      "max:cgAlpha_sitting_ride_controls": {
         "minecraft:boostable": {
-          "speed_multiplier": 4.0,
-          "duration": 3.0,
+          "speed_multiplier": 2.0,
+          "duration": 10.0,
           "boost_items": [
             {
-              "item": "bone",
+              "item": "rotten_flesh",
               "damage": 1
             }
           ]
+        }
+      },
+
+      //Sitting - Seating
+      "max:cgAlpha_sitting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.35, -0.15 ]
+          }
+        }
+      },
+
+      //Sitting - Scooting Controls
+      "max:cgAlpha_scooting_ride_controls": {
+        "minecraft:input_ground_controlled": {
+        },
+        "minecraft:behavior.player_ride_tamed": {
+        }
+      },
+
+      //Sitting - Scooting Seating
+      "max:cgAlpha_scooting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.35, -0.5 ]
+          }
+        }
+      },
+
+      //Ridden vs Not Ridden
+      "max:cgBehaviors_when_not_ridden": {
+        "minecraft:behavior.beg": {
+          "priority": 9,
+          "look_distance": 8,
+          "look_time": [ 2, 4 ],
+          "items": [ "bone", "porkchop", "cooked_porkchop", "chicken", "cooked_chicken", 
+                     "beef", "cooked_beef", "muttonraw", "muttoncooked", "rabbit", "cooked_rabbit" ]
+        }
+      },
+
+      //-----------------------------------
+      // Scooting Move Speed Adjustment
+      //  - Because of bug MCPE-164424, movement_speed is adjusted instead of speed_multiplier in 'minecraft:boostable'.
+      //    When bug is fixed, return this component to "components"
+      //-----------------------------------
+
+      "max:cgDefault_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.3
+        }
+      },
+
+      "max:cgScooting_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.06
+        }
+      },
+
+      "max:cgNo_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.0
+        }
+      },
+
+      "max:cgNon_scoot_mode_follow": {
+        "minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1.0,
+          "start_distance": 10,
+          "stop_distance": 2
         }
       },
 
@@ -267,6 +384,7 @@
       },
 
 
+      //----------------------
       //Breeding
       //----------------------
       "max:cgShare_var_1_0": {
@@ -461,9 +579,6 @@
           "value": 110
         }
       },
-      //----------------------
-      //----------------------
-
 
       
       //===================================
@@ -499,8 +614,7 @@
             "porkchop",
             "cooked_porkchop",
             "rabbit",
-            "cooked_rabbit",
-            "rotten_flesh"
+            "cooked_rabbit"
           ]
         }
       },
@@ -619,23 +733,17 @@
         }
       },
 
+
       "minecraft:wolf_tame": {
         "minecraft:is_tamed": {
         },
         "minecraft:color": {
           "value": 14
         },
-        "minecraft:behavior.follow_owner": {
-          "priority": 6,
-          "speed_multiplier": 1.0,
-          "start_distance": 10,
-          "stop_distance": 2
-        },
         "minecraft:behavior.breed": {
           "priority": 3,
           "speed_multiplier": 1.0
         },
-
         "minecraft:behavior.owner_hurt_by_target": {
           "priority": 1
         },
@@ -775,10 +883,6 @@
             "heal_amount": 6
           },
           {
-            "item": "rotten_flesh",
-            "heal_amount": 4
-          },
-          {
             "item": "rabbit",
             "heal_amount": 3
           },
@@ -819,17 +923,6 @@
         "priority": 6,
         "target_distance": 6.0,
         "probability": 0.02
-      },
-      "minecraft:behavior.beg": {
-        "priority": 9,
-        "look_distance": 8,
-        "look_time": [ 2, 4 ],
-        "items": [ "bone", "porkchop", "cooked_porkchop", "chicken", "cooked_chicken", 
-                   "beef", "cooked_beef", "rotten_flesh", "muttonraw", "muttoncooked", "rabbit", "cooked_rabbit" ]
-      },
-
-      "minecraft:behavior.hurt_by_target": {
-        "priority": 3
       },
       "minecraft:physics": {
       },
@@ -1302,6 +1395,7 @@
       "minecraft:entity_born": {
         "add": {
           "component_groups": [
+            "max:cgDefault_movement_speed",
             "max:cgMark_var_default",
             "max:wolf_baby_attributes",
             "minecraft:wolf_tame"
@@ -1674,7 +1768,8 @@
             "filters": { "test": "has_component", "value": "minecraft:is_tamed"},
             "add": {
               "component_groups": [
-                "max:alpha_can_be_ridden"
+                "max:cgAlpha_standing_ride_controls",
+                "max:cgAlpha_standing_ride_seating"
               ]
             }
           }
@@ -1752,6 +1847,11 @@
 
 
       "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        },
         "randomize": [
           //Baby
           {
@@ -1917,6 +2017,225 @@
           }
         ]
       },
+
+
+      //----------------------------------
+      // Sitting/Standing, Sprinting/Scooting, Rider/No Rider
+      //----------------------------------
+
+      //Standing vs Sitting
+      //-----------
+      "max:eStandingControls": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_controls"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_controls"
+          ]
+        }
+      },
+      "max:eStandingSeating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        }
+      },
+      "max:eSittingControls": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_controls"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_controls"
+          ]
+        }
+      },
+      "max:eSittingSeating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        }
+      },
+
+      //Rider vs No Rider
+      //-----------
+      "max:eHas_rider": {
+        "remove": {
+          "component_groups": [
+            "max:cgBehaviors_when_not_ridden"
+          ]
+        }
+      },
+
+      "max:eHas_no_rider": {
+        "add": {
+          "component_groups": [
+            "max:cgBehaviors_when_not_ridden"
+          ]
+        }
+      },
+
+      //Sprinting/Scooting
+      //-----------
+      //Sprinting
+      "max:eSprinting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        }
+      },
+      "max:eNot_sprinting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+      "max:eSprint_mode_no_rider_remove_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        }
+      },
+      "max:eSprint_mode_no_rider_return_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        }
+      },
+      "max:eSitting_in_sprint_mode_no_seating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+      "max:eSitting_in_sprint_mode_return_seating": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+
+      //Scooting
+      "max:eScoot_mode": {
+        "remove": {
+          "component_groups": [
+            "max:cgDefault_movement_speed",
+            "max:cgNon_scoot_mode_follow"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_controls",
+            "max:cgScooting_movement_speed"
+          ]
+        }
+      },
+      "max:eNot_scoot_mode": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_controls",
+            "max:cgScooting_movement_speed",
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed",
+            "max:cgNon_scoot_mode_follow"
+          ]
+        }
+      },
+      "max:eScoot_mode_scooting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        }
+      },
+      "max:eScoot_mode_not_scooting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_seating"
+          ]
+        }
+      },
+      "max:eScoot_mode_no_rider_remove_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgScooting_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        }
+      },
+      "max:eScoot_mode_no_rider_return_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgScooting_movement_speed"
+          ]
+        }
+      },
       //================================
       //================================
 
@@ -1945,7 +2264,8 @@
             },
             "add": {
               "component_groups": [
-                "minecraft:wolf_tame"
+                "minecraft:wolf_tame",
+                "max:cgNon_scoot_mode_follow"
               ]
             }
           },
@@ -1954,11 +2274,6 @@
               "all_of": [
                 {"test": "is_variant", "value": 110},
                 {"test": "has_component", "value": "minecraft:is_baby", "operator": "!="}
-              ]
-            },
-            "add": {
-              "component_groups": [
-                "max:alpha_can_be_ridden"
               ]
             }
           }
