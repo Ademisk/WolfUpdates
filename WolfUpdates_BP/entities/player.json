@@ -5,7 +5,15 @@
       "identifier": "minecraft:player",
       "is_spawnable": false,
       "is_summonable": false,
-      "is_experimental": false
+      "is_experimental": false,
+      "animations": {
+        "default": "controller.animation.player.default"
+      },
+      "scripts": {
+        "animate": [
+          "default"
+        ]
+      }
     },
 
     "component_groups": {

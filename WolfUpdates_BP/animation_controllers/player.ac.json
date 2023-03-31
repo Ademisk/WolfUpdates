@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    //==========================================================
+    //
+    // Default Controller
+    //
+    //==========================================================
+    "controller.animation.player.default": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "has_target": "query.has_target"
+            }
+          ]
+        },
+
+        "has_target": {
+          "on_entry": [
+            "/say has target"
+          ],
+          "transitions": [
+            {
+              "default": "1"
+            }
+          ]
+        }
+
+        
+      }
+    }
+
+  }
+}

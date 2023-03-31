@@ -1,18 +1,18 @@
 {
 	"format_version": 2,
 	"header": {
-		"name": "Wolf Updates - v1.0.6",
-		"description": "Wolfie buffs",
-		"uuid": "1b874fd4-c510-48e9-be00-ee05100650c3",
-		"version": [1,0,6],
+		"name": "Wolf Updates - v1.0.7",
+		"description": "Resource",
+		"uuid": "85a42976-809e-4b2c-8576-78d746d990a6",
+		"version": [1,0,7],
 		"min_engine_version": [1,18,10]
 	},
 	"modules": [
 		{
 			"description": "Resources",
-			"uuid": "9c9dfafc-66fb-42ac-9cb8-998c12d86dc5",
+			"uuid": "6872099d-762c-46ec-be5f-718eb7cd5cb9",
 			"type": "resources",
-			"version": [1,0,6]
+			"version": [1,0,7]
 		}
 	]
 }

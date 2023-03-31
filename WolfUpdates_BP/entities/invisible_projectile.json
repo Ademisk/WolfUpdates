@@ -1,0 +1,25 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "max:invisible_projectile",
+      "runtime_identifier": "minecraft:arrow",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+
+    "components": {
+      "minecraft:projectile": {
+        "on_hit": {
+          "remove_on_hit": {}
+        },
+
+        "power": 1.6,
+        "gravity": 0.00,
+        "inertia": 1,
+        "liquid_inertia": 1
+      }
+    }
+  }
+}

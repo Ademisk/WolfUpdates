@@ -1,0 +1,22 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "max:target_placer",
+			"category": "Items"
+		},
+		"components": {
+			"minecraft:use_duration": 32,
+			"minecraft:icon": {
+				"texture": "apple_golden"
+			},
+			"minecraft:projectile": {
+				"minimum_critical_power": 0,
+				"projectile_entity": "max:target_placer"
+			},
+			"minecraft:throwable": {},
+			"minecraft:hand_equipped": true,
+			"minecraft:max_stack_size": 64
+		}
+	  }
+	}

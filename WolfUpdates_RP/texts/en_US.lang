@@ -1,0 +1,8 @@
+entity.max:wolf_playful.name=Playful Wolf
+item.spawn_egg.entity.max:wolf_playful.name=Spawn Wolf (Playful)
+
+entity.max:wolf_helpful.name=Helpful Wolf
+item.spawn_egg.entity.max:wolf_helpful.name=Spawn Wolf (Helpful)
+
+entity.max:wolf_protective.name=Protective Wolf
+item.spawn_egg.entity.max:wolf_protective.name=Spawn Wolf (Protective)

@@ -289,12 +289,11 @@
 				}
 			}
 		},
-		//=============================
-		// Addon
-		//=============================
 		"animation.player.riding_arms.mount_sprinting": {
 			"loop": true,
 			"animation_length": 0.5,
+			//"start_delay": "v.anim = math.mod(.5, query.time_of_day * 10000); return v.anim;",
+			//"override_previous_animation": true,
 			"bones": {
 				"leftArm": {
 					"rotation": {
@@ -313,6 +312,8 @@
 		"animation.player.riding_sans_arms.mount_sprinting": {
 			"loop": true,
 			"animation_length": 0.5,
+			//"start_delay": "v.anim = math.mod(.5, query.time_of_day * 10000); return v.anim;",
+			//"start_delay": "v.anim = math.mod(.5, query.time_of_day * 10000); return v.anim;",
 			"override_previous_animation": true,
 			"bones": {
 				"root": {

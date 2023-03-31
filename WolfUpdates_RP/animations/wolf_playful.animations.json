@@ -1,0 +1,40 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.wolf_playful.lay_down": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": ["-this", "-18 - this", "1.0 - this"],
+					"rotation": ["75 - this", 0, 0]
+				},
+				"tail": {
+					"position": ["-1.0 - this", "-18 - this", "8.0 - this"]
+				},
+				"upperbody": {
+					"position": ["-1.0 - this", "-18 - this", "-3.0 - this"],
+					"rotation": ["90 - this", 0, 0]
+				},
+				"head": {
+					"position": [0, -4, -1]
+				},
+				"leg0": {
+					"position": ["-4.5 - this", "-22 - this", "7 - this"],
+					"rotation": ["270 - this", 10, 0]
+				},
+				"leg1": {
+					"position": ["2.5 - this", "-22 - this", "7 - this"],
+					"rotation": ["270 - this", -10, 0]
+				},
+				"leg2": {
+					"position": ["-3.5 - this", "-22 - this", "-2 - this"],
+					"rotation": ["270 - this", 0, 0]
+				},
+				"leg3": {
+					"position": ["1.5 - this", "-22 - this", "-2 - this"],
+					"rotation": ["270 - this", 0, 0]
+				}
+			}
+		}
+	}
+}

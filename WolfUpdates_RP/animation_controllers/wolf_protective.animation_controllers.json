@@ -1,0 +1,112 @@
+{
+	"format_version" : "1.10.0",
+	"animation_controllers" : {
+		"controller.animation.wolf_protective.sitting_moving" : {
+			"initial_state" : "walking",
+			"states" : {
+				"walking": {
+					"animations": [
+						"wolf_move_default"
+					],
+					"transitions": [
+						{
+							"sitting": "!query.is_sprinting && query.is_sitting"
+						},
+						{
+							"boosted_sitting": "query.is_sitting"	//triggers when boosted and sat down
+						},
+						{
+							"sprinting": "query.is_sprinting && query.ground_speed >= 25"
+						}
+					]
+				},
+
+				//Functions like "sitting", but is here to wait out an activated boost before sitting, so as to avoid triggering 'scoot_mode' prematurely
+				"boosted_sitting": {
+					"animations": [
+						"wolf_sitting"
+					],
+					"transitions": [
+						{
+							"walking": "!query.is_sitting"
+						},
+						{
+							"sitting": "!query.is_sprinting"	//transition to normal sitting once boost for sprinting has worn off
+						}
+					]
+				},
+
+				"sitting": {
+					"animations": [
+						"wolf_sitting"
+					],
+					"transitions": [
+						{
+							"walking": "!query.is_sitting"
+						},
+						{
+							"scoot_mode": "query.is_sprinting"
+						}
+					]
+				},
+
+				"sprinting": {
+					"animations": [
+						"wolf_move_sprinting"
+					],
+					"transitions": [
+						{
+							"walking": "!query.is_sprinting || query.ground_speed < 25"
+						}
+					]
+				},
+
+				"scoot_mode": {
+					"animations": [
+						"wolf_sitting",
+						"wolf_gassy"
+					],
+					"transitions": [
+						{
+							"sitting": "!query.is_sprinting"
+						},
+						{
+							"scooting": "query.ground_speed >= 4"
+						}
+					]
+				},
+
+				"scooting": {
+					"animations": [ 
+						"wolf_move_scooting",
+						"wolf_gassy"
+					],
+					"transitions": [
+						{
+							"sitting": "!query.is_sprinting"
+						},
+						{
+							"scoot_mode": "query.ground_speed < 4 || !query.has_rider"
+						}
+					]
+				}
+			}
+		},
+
+		"controller.animation.wolf_protective.tail" : {
+			"initial_state" : "default",
+			"states" : {
+				"default" : {
+					"animations" : [
+						{
+							"wolf_tail_default": "!(query.is_sprinting && query.ground_speed >= 25)"
+						},
+						{
+							"wolf_tail_sprinting": "query.is_sprinting && query.ground_speed >= 25"
+						}
+					]
+				}
+			}
+		}
+	}
+}

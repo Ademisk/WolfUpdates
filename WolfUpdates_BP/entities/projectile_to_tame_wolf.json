@@ -1,0 +1,70 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "max:tamed_wolf",
+      "runtime_identifier": "minecraft:arrow",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+
+    "component_groups": {
+      "max:cgTransform_into_wolf": {
+        "minecraft:transformation": {
+          "into": "minecraft:wolf",
+          "keep_owner": true
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:projectile": {
+
+        /*"on_hit": {
+          "definition_event": {
+            "affect_projectile": true,
+            "event_trigger": {
+              "event": "max:eTrigger_transform",
+              "target": "self"
+            }
+          }
+        },*/
+
+        "stop_on_hurt": true,
+        "power": 1.6,
+        "gravity": 0.00,
+        "inertia": 1,
+        "liquid_inertia": 1,
+        "destroy_on_hurt": true,
+        "uncertainty_base": 0,
+        "uncertainty_multiplier": 0,
+        "anchor": 1,
+        "offset": [ 0, -0.1, 0 ],
+        "reflect_on_hurt": false,
+        "catch_fire": false
+      }
+    },
+
+    "events": {
+      "max:eTrigger_transform": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "max:cgTransform_into_wolf"
+              ]
+            }
+          },
+          {
+            "trigger": {
+              "filters":{ "test": "is_family", "subject": "other", "value": "sheep" },
+              "event": "max:eDespawn",
+              "target": "other"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

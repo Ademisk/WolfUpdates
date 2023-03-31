@@ -1,0 +1,1833 @@
+//This wolf is for variants 1.8 and 2.0
+{
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "max:wolf_protective",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "animations": {
+        "spawn_sound": "controller.animation.wolf_protective.spawn_sound",
+        "breeding": "controller.animation.wolf_protective.breeding",
+        "riding": "controller.animation.wolf_protective.riding"
+        //"movement": "controller.animation.wolf.movement",
+        /*"howl_replacement": "controller.animation.wolf.howl_replacing"*/
+      },
+      "scripts": {
+        "animate": [
+          "spawn_sound",
+          "breeding",
+          "riding"
+          //"movement",
+          /*"howl_replacement"*/
+        ]
+      }
+    },
+
+    "component_groups": {
+      //===================================
+      //Addon
+      //===================================
+
+      //Variants
+      //-----------------
+      "max:cgWolf_var_1_8": {
+        "minecraft:variant": {
+          "value": 108
+        }
+      },
+      "max:cgWolf_var_2_0": {
+        "minecraft:variant": {
+          "value": 110
+        }
+      },
+
+      //Scaling for babies and adults
+      //Baby
+      //--------------------
+      "max:cgWolf_baby_scale_1_8": {
+        "minecraft:scale": {
+          "value": 0.70
+        }
+      },
+      "max:cgWolf_baby_scale_2_0": {
+        "minecraft:scale": {
+          "value": 0.75
+        }
+      },
+
+      //Adult
+      //--------------------
+      "max:cgWolf_adult_scale_1_8": {
+        "minecraft:scale": {
+          "value": 1.8
+        }
+      },
+      "max:cgWolf_adult_scale_2_0": {
+        "minecraft:scale": {
+          "value": 2.0
+        }
+      },
+
+
+      //-------------------------
+      //Wolf attributes
+      //-------------------------
+      //Baby
+      "max:cgWolf_baby_attributes": {
+        "minecraft:is_baby": {
+        },
+        "minecraft:health": {
+          "value": 10,
+          "max": 10
+        },
+        "minecraft:attack": {
+          "damage": 2
+        },
+
+        "minecraft:ageable": {
+          "duration": 1200,
+          "feed_items": [
+            "chicken",
+            "cooked_chicken",
+            "beef",
+            "cooked_beef",
+            "muttonRaw",
+            "muttonCooked",
+            "porkchop",
+            "cooked_porkchop",
+            "rabbit",
+            "cooked_rabbit"
+          ],
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          }
+        }
+      },
+
+
+      //Adult
+      //Large - Protective
+      "max:cgWolf_adult_attributes_1_8": {
+        "minecraft:health": {
+          "value": 28,
+          "max": 28
+        },
+        "minecraft:attack": {
+          "damage": 6
+        }
+      },
+
+      "max:cgWolf_adult_attributes_2_0": {   //Alpha
+        "minecraft:health": {
+          "value": 30,
+          "max": 30
+        },
+        "minecraft:attack": {
+          "damage": 6
+        }
+      },
+
+
+      //-------------------------
+      //Wolf riding
+      //-------------------------
+
+      //Standing - Controls
+      "max:cgAlpha_standing_ride_controls": {
+        "minecraft:input_ground_controlled": {
+        },
+        "minecraft:behavior.player_ride_tamed": {
+        },
+        "minecraft:can_power_jump": {
+        },
+        "minecraft:horse.jump_strength": {
+          "value": 0.5
+        },
+        "minecraft:boostable": {
+          "speed_multiplier": 2.0,
+          "duration": 10.0,
+          "boost_items": [
+            {
+              "item": "bone"
+            }
+          ]
+        }
+      },
+
+      //Standing - Seating
+      "max:cgAlpha_standing_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.675, -0.1 ]
+          }
+        }
+      },
+
+      //Standing - Sprint Seating
+      "max:cgAlpha_sprinting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.575, -0.1 ]
+          }
+        }
+      },
+
+
+      //Sitting - Controls
+      "max:cgAlpha_sitting_ride_controls": {
+        "minecraft:boostable": {
+          "speed_multiplier": 2.0,
+          "duration": 10.0,
+          "boost_items": [
+            {
+              "item": "rotten_flesh",
+              "damage": 1
+            }
+          ]
+        }
+      },
+
+      //Sitting - Seating
+      "max:cgAlpha_sitting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.35, -0.15 ]
+          }
+        }
+      },
+
+      //Sitting - Scooting Controls
+      "max:cgAlpha_scooting_ride_controls": {
+        "minecraft:input_ground_controlled": {
+        },
+        "minecraft:behavior.player_ride_tamed": {
+        }
+      },
+
+      //Sitting - Scooting Seating
+      "max:cgAlpha_scooting_ride_seating": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "interact_text": "action.interact.ride.horse",
+          "family_types": [
+            "player"
+          ],
+          "seats": {
+            "position": [ -0.06, 0.35, -0.5 ]
+          }
+        }
+      },
+
+      //Ridden vs Not Ridden
+      "max:cgBehaviors_when_not_ridden": {
+        "minecraft:behavior.beg": {
+          "priority": 9,
+          "look_distance": 8,
+          "look_time": [ 2, 4 ],
+          "items": [ "bone", "porkchop", "cooked_porkchop", "chicken", "cooked_chicken", 
+                     "beef", "cooked_beef", "muttonraw", "muttoncooked", "rabbit", "cooked_rabbit" ]
+        }
+      },
+
+      //-----------------------------------
+      // Scooting Move Speed Adjustment
+      //  - Because of bug MCPE-164424, movement_speed is adjusted instead of speed_multiplier in 'minecraft:boostable'.
+      //    When bug is fixed, return this component to "components"
+      //-----------------------------------
+
+      "max:cgDefault_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.3
+        }
+      },
+
+      "max:cgScooting_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.06
+        }
+      },
+
+      "max:cgNo_movement_speed": {
+        "minecraft:movement": {
+          "value": 0.0
+        }
+      },
+
+      "max:cgNon_scoot_mode_follow": {
+        "minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1.0,
+          "start_distance": 10,
+          "stop_distance": 2
+        }
+      },
+
+      /*"max:howl_to_tame_wolves": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_entity": "wolf",
+              "spawn_event": "max:spawn_and_join_pack",
+              "single_use": true,
+              "num_to_spawn": 2,
+              "should_leash": false
+            }
+          ]
+        }
+      },*/
+
+      "max:cgNon_alpha_despawns": {
+        "minecraft:despawn": {
+          "despawn_from_distance": {}
+        }
+      },
+
+
+      //----------------------
+      //Breeding
+      //----------------------
+      "max:cgShare_var_1_8": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_1_8" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgShare_var_2_0": {
+        "minecraft:behavior.send_event": {
+          "priority": 2,
+          "event_choices": [
+            {
+              "min_activation_range": 0.0,
+              "max_activation_range": 4.0,
+              "cooldown_time": 0.1,
+              "cast_duration": 0.0,
+              "particle_color": "#FFB38033",
+              "weight": 3,
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "wolf" },
+                  { "test": "has_tag", "subject": "other", "operator": "==", "value": "wolfLoveState"},
+                  { "test": "has_tag", "subject": "other", "operator": "!=", "value": "receivedMarkVar"}
+                ]
+              },
+              "sequence":[
+                { "event":"max:eRecieve_variant_2_0" }
+              ]
+            }
+          ]
+        }
+      },
+
+      "max:cgMark_var_none": {
+        "minecraft:mark_variant": {
+          "value": 0
+        }
+      },
+
+      "max:cgMark_var_1_0": {
+        "minecraft:mark_variant": {
+          "value": 100
+        }
+      },
+      "max:cgMark_var_1_2": {
+        "minecraft:mark_variant": {
+          "value": 102
+        }
+      },
+      "max:cgMark_var_1_4": {
+        "minecraft:mark_variant": {
+          "value": 104
+        }
+      },
+      "max:cgMark_var_1_6": {
+        "minecraft:mark_variant": {
+          "value": 106
+        }
+      },
+      "max:cgMark_var_1_8": {
+        "minecraft:mark_variant": {
+          "value": 108
+        }
+      },
+      "max:cgMark_var_2_0": {
+        "minecraft:mark_variant": {
+          "value": 110
+        }
+      },
+
+
+      //------------------------------------
+      // Transforming into bigger baby
+      //------------------------------------
+      // wolf_playful
+      "max:cgTransform_into_1_0_baby": {
+        "minecraft:transformation": {
+          "into": "max:wolf_playful<max:eBecome_size_1_0_baby>",
+          "keep_owner": true
+        }
+      },
+      "max:cgTransform_into_1_2_baby": {
+        "minecraft:transformation": {
+          "into": "max:wolf_playful<max:eBecome_size_1_2_baby>",
+          "keep_owner": true
+        }
+      },
+      // wolf_helpful
+      "max:cgTransform_into_1_4_baby": {
+        "minecraft:transformation": {
+          "into": "max:wolf_helpful<max:eBecome_size_1_4_baby>",
+          "keep_owner": true
+        }
+      },
+      "max:cgTransform_into_1_6_baby": {
+        "minecraft:transformation": {
+          "into": "max:wolf_helpful<max:eBecome_size_1_6_baby>",
+          "keep_owner": true
+        }
+      },
+
+      
+      //===================================
+      //===================================
+
+      "minecraft:wolf_adult": {
+        "minecraft:experience_reward": {
+          "on_bred": "Math.Random(1,7)",
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+        },
+        "minecraft:loot": {
+          "table": "loot_tables/entities/wolf.json"
+        },
+        "minecraft:breedable": {
+          "require_tame": true,
+          "require_full_health": true,
+          "breed_cooldown": 60,
+          "breeds_with": [
+            {
+              "mate_type": "max:wolf_playful",
+              "baby_type": "max:wolf_protective",
+              "breed_event": {
+                "event": "max:eBreeding_event",
+                "target": "self"
+              }
+            },
+            {
+              "mate_type": "max:wolf_helpful",
+              "baby_type": "max:wolf_protective",
+              "breed_event": {
+                "event": "max:eBreeding_event",
+                "target": "self"
+              }
+            },
+            {
+              "mate_type": "max:wolf_protective",
+              "baby_type": "max:wolf_protective",
+              "breed_event": {
+                "event": "max:eBreeding_event",
+                "target": "self"
+              }
+            }
+          ],
+          "breed_items": [
+            "chicken",
+            "cooked_chicken",
+            "beef",
+            "cooked_beef",
+            "muttonRaw",
+            "muttonCooked",
+            "porkchop",
+            "cooked_porkchop",
+            "rabbit",
+            "cooked_rabbit"
+          ]
+        }
+      },
+
+      "minecraft:wolf_angry": {
+        "minecraft:angry": {
+          "duration": 25,
+          "broadcast_anger": true,
+          "broadcast_range": 20,
+          "calm_event": {
+            "event": "minecraft:on_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:on_target_acquired": {
+        },
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "zombie"
+          ],
+          "seats": {
+            "position": [ 0.0, 0.675, -0.1 ]
+          }
+        }
+      },
+
+      "minecraft:wolf_wild": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 3,
+          "entity_types": [
+            {
+              "filters": { "test": "is_family", "subject": "other", "value": "llama" },
+              "max_dist": 24,
+              "walk_speed_multiplier": 1.5,
+              "sprint_speed_multiplier": 1.5
+            }
+          ],
+          "probability_per_strength": 0.14
+        },
+        "minecraft:tameable": {
+          "probability": 0.33,
+          "tame_items": "bone",
+          "tame_event": {
+            "event": "minecraft:on_tame",
+            "target": "self"
+          }
+        },
+
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 4,
+          "reselect_targets": true,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "sheep"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "rabbit"},
+                  { "test" :  "is_family", "subject" : "other", "value" :  "fox"}
+                ] 
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "baby_turtle"
+                  },
+                  {
+                    "test": "in_water",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": true
+                  }
+                ]
+              },
+              "max_dist": 16
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "skeleton"
+                  },
+                  {
+                    "test": "is_underwater",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": true
+                  }
+                ]
+              },
+              "max_dist": 16
+            }
+          ]
+        },
+        "minecraft:on_target_acquired": {
+          "event": "minecraft:become_angry",
+          "target": "self"
+        },
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "zombie"
+          ],
+          "seats": {
+            "position": [ 0.0, 0.675, -0.1 ]
+          }
+        }
+      },
+
+
+      //==============================================
+      // Addon
+      //==============================================
+      /*"max:wolf_wild_join_pack": {
+        "minecraft:tameable": {
+          "probability": 0.33,
+          "tame_items": "bone",
+          "tame_event": {
+            "event": "minecraft:on_tame",
+            "target": "self"
+          }
+        },
+
+        /*"minecraft:behavior.ranged_attack": {
+          "priority": 3,
+          "attack_interval_min": 1,
+          "attack_interval_max": 3,
+          "attack_radius": 32.0
+        },
+        "minecraft:shooter": {
+          //"def": "max:invisible_projectile"
+          "def": "minecraft:snowball"
+        },*/
+
+        /*"minecraft:behavior.hurt_by_target": {
+          "priority": 1
+        },*/
+        /*"minecraft:on_target_acquired": {
+          "event": "minecraft:become_angry",
+          "target": "self"
+        },
+
+        "minecraft:on_target_escape": {
+          "event": "minecraft:on_calm",
+          "target": "self"
+        },
+
+        "minecraft:behavior.nearest_prioritized_attackable_target": {
+          "priority": 2,
+          "set_persistent": true,
+          "persist_time": 999,
+          "reselect_targets": false,
+          "must_see": false,
+          "within_radius": 32,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {"test": "is_family", "subject": "other", "value":  "wolf"},
+                  {"test": "has_tag", "subject": "other", "operator": "equals", "value": "alpha"}
+                ] 
+              },
+              "max_dist": 32
+            }
+          ]
+        },
+
+        "minecraft:behavior.move_towards_target": {
+          "priority": 0,
+          "speed_multiplier": 2,
+          "within_radius": 0
+        }
+      },*/
+
+      //==============================================
+      //==============================================
+
+      "minecraft:wolf_tame": {
+        "minecraft:is_tamed": {
+        },
+        "minecraft:color": {
+          "value": 14
+        },
+        /*"minecraft:behavior.follow_owner": {
+          "priority": 6,
+          "speed_multiplier": 1.0,
+          "start_distance": 10,
+          "stop_distance": 2
+        },*/
+        "minecraft:behavior.breed": {
+          "priority": 3,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:behavior.owner_hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.owner_hurt_target": {
+          "priority": 2
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 5,
+          "must_see": true,
+          "entity_types": [
+            {
+              "filters": { "test" :  "is_family", "subject" : "other", "value" :  "skeleton"},
+              "max_dist": 16
+            }
+          ]
+        },
+
+        "minecraft:sittable": {
+        },
+        "minecraft:is_dyeable": {
+          "interact_text": "action.interact.dye"
+        }
+      }
+    },
+
+
+    "components": {
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:type_family": {
+        "family": [ "wolf", "wolf_protective", "mob" ]
+      },
+      "minecraft:leashable": {
+        "soft_distance": 4.0,
+        "hard_distance": 6.0,
+        "max_distance": 10.0,
+        "on_leash": {
+          "event": "minecraft:on_leash",
+          "target": "self"
+        },
+        "on_unleash": {
+          "event": "minecraft:on_unleash",
+          "target": "self"
+        }
+      },
+      "minecraft:balloonable": {
+        "mass": 0.8
+      },
+      "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:nameable": {
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 0.8
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.basic": {
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:healable": {
+        "items": [
+          {
+            "item": "porkchop",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_porkchop",
+            "heal_amount": 8
+          },
+          {
+            "item": "fish",
+            "heal_amount": 2
+          },
+          {
+            "item": "salmon",
+            "heal_amount": 2
+          },
+          {
+            "item": "clownfish",
+            "heal_amount": 1
+          },
+          {
+            "item": "pufferfish",
+            "heal_amount": 1
+          },
+          {
+            "item": "cooked_fish",
+            "heal_amount": 5
+          },
+          {
+            "item": "cooked_salmon",
+            "heal_amount": 6
+          },
+          {
+            "item": "beef",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_beef",
+            "heal_amount": 8
+          },
+          {
+            "item": "chicken",
+            "heal_amount": 2
+          },
+          {
+            "item": "cooked_chicken",
+            "heal_amount": 6
+          },
+          {
+            "item": "muttonRaw",
+            "heal_amount": 2
+          },
+          {
+            "item": "muttonCooked",
+            "heal_amount": 6
+          },
+          {
+            "item": "rabbit",
+            "heal_amount": 3
+          },
+          {
+            "item": "cooked_rabbit",
+            "heal_amount": 5
+          },
+          {
+            "item": "rabbit_stew",
+            "heal_amount": 10
+          }
+        ]
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.mount_pathing": {
+        "priority": 1,
+        "speed_multiplier": 1.25,
+        "target_dist": 0,
+        "track_target": true
+      },
+      "minecraft:behavior.stay_while_sitting": {
+        "priority": 3
+      },
+      "minecraft:behavior.leap_at_target": {
+        "priority": 4,
+        "target_dist": 0.4
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 5
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 8,
+        "speed_multiplier": 1.0
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 6,
+        "target_distance": 6.0,
+        "probability": 0.02
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+      }
+    },
+
+    "events": {
+      //==============================
+      //Addon
+      //==============================
+
+      //Breeding Process
+      //1) During 'in_love' state, receive the other parent's variant
+      "max:eRecieve_variant_1_0": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_0"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_2": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_2"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_4": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_4"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_6": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_6"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_1_8": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_1_8"
+          ]
+        }
+      },
+
+      "max:eRecieve_variant_2_0": {
+        "remove": {
+          "component_groups": [
+            "max:cgMark_var_none",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0",
+            "max:cgLove_state_variant_sharing"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_2_0"
+          ]
+        }
+      },
+
+      //2) Generate that baby wolf!
+      "max:eBreeding_event": {
+        "sequence": [
+          //Var 100 combinations: 
+          //- 100-100               XXX
+
+          //Var 102 combinations: 
+          //- 100-102 (rounds up)   XXX
+          //- 100-104               XXX
+          //- 102-100 (rounds up)   XXX
+          //- 102-102               XXX
+          //- 104-100               XXX
+
+          {
+            //Var 104 combinations:
+            //- 100-106 (rounds up)   XXX
+            //- 100-108               XXX
+            //- 102-104 (rounds up)   XXX
+            //- 102-106               XXX
+            //- 104-102 (rounds up)   XXX
+            //- 104-104               XXX
+            //- 106-100 (rounds up)   XXX
+            //- 106-102               XXX
+            //- 108-100
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:eBirth_size_1_4_with_variance",
+              "target": "self"
+            }
+          },
+          {
+            //Var 106 combinations: 
+            //- 100-110 (rounds up)   XXX
+            //- 102-108 (rounds up)   XXX
+            //- 102-110               XXX
+            //- 104-106 (rounds up)   XXX
+            //- 104-108               XXX
+            //- 106-104 (rounds up)   XXX
+            //- 106-106               XXX
+            //- 108-102 (rounds up)
+            //- 108-104
+            //- 110-100 (rounds up)
+            //- 110-102
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 100}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 102}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:eBirth_size_1_6_with_variance",
+              "target": "self"
+            }
+          },
+          {
+            //Var 108 combinations: 
+            //- 104-110               XXX
+            //- 106-108 (rounds up)   XXX
+            //- 106-110               XXX
+            //- 108-106 (rounds up)
+            //- 108-108
+            //- 110-104 (rounds up)
+            //- 110-106
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 104}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 106}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:eBirth_size_1_8_with_variance",
+              "target": "self"
+            }
+          },
+          {
+            //Var 110 combinations: 
+            //- 108-110 (rounds up)
+            //- 110-108 (rounds up)
+            //- 110-110
+            "trigger": {
+              "filters": {
+                "any_of": [
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 108},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 108}
+                    ]
+                  },
+                  {
+                    "all_of": [
+                      {"test": "is_variant", "subject": "self", "value": 110},
+                      {"test": "is_mark_variant", "subject": "self", "value": 110}
+                    ]
+                  }
+                ]
+              },
+              "event": "max:eBirth_size_2_0_with_variance",
+              "target": "self"
+            }
+          }
+        ]
+      },
+
+      //3) Incorporate slight chance for resulting size variation. 80% the blended average, 10% bigger, 10% smaller
+      /*"minecraft:entity_born": {
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed",
+            "max:cgMark_var_none",
+            "max:cgWolf_baby_attributes",
+            "minecraft:wolf_tame"
+          ]
+        }
+      },*/
+
+      "max:eBirth_size_1_4_with_variance": {
+        "randomize": [
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_1_2_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 8,
+            "trigger": {
+              "event": "max:eBecome_size_1_4_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_1_6_baby",
+              "target": "baby"
+            }
+          }
+        ]
+      },
+      "max:eBirth_size_1_6_with_variance": {
+        "randomize": [
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_1_4_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 8,
+            "trigger": {
+              "event": "max:eBecome_size_1_6_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_1_8_baby",
+              "target": "baby"
+            }
+          }
+        ]
+      },
+      "max:eBirth_size_1_8_with_variance": {
+        "randomize": [
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_1_6_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 8,
+            "trigger": {
+              "event": "max:eBecome_size_1_8_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 1,
+            "trigger": {
+              "event": "max:eBecome_size_2_0_baby",
+              "target": "baby"
+            }
+          }
+        ]
+      },
+      "max:eBirth_size_2_0_with_variance": {
+        "randomize": [
+          {
+            "weight": 2,
+            "trigger": {
+              "event": "max:eBecome_size_1_8_baby",
+              "target": "baby"
+            }
+          },
+          {
+            "weight": 8,
+            "trigger": {
+              "event": "max:eBecome_size_2_0_baby",
+              "target": "baby"
+            }
+          }
+        ]
+      },
+
+
+      //3.5) Set baby's determined size
+
+      //Transform into wolf_1 (playful)
+      "max:eBecome_size_1_2_baby": {
+        "add": {
+          "component_groups": [
+            "max:cgTransform_into_1_2_baby"
+          ]
+        }
+      },
+
+      //Transform into wolf_2 (helpful)
+      "max:eBecome_size_1_4_baby": {
+        "add": {
+          "component_groups": [
+            "max:cgTransform_into_1_4_baby"
+          ]
+        }
+      },
+
+      //Transform into wolf_2 (helpful)
+      "max:eBecome_size_1_6_baby": {
+        "add": {
+          "component_groups": [
+            "max:cgTransform_into_1_6_baby"
+          ]
+        }
+      },
+
+      "max:eBecome_size_1_8_baby": {
+        "add": {
+          "component_groups": [
+            "max:cgWolf_var_1_8",
+            "max:cgWolf_baby_scale_1_8",
+            "max:cgNon_alpha_despawns",
+            "max:cgDefault_movement_speed",
+            "max:cgMark_var_none",
+            "max:cgWolf_baby_attributes",
+            "minecraft:wolf_tame"
+          ]
+        }
+      },
+
+      "max:eBecome_size_2_0_baby": {
+        "add": {
+          "component_groups": [
+            "max:cgWolf_var_2_0",
+            "max:cgWolf_baby_scale_2_0",
+            "max:cgDefault_movement_speed",
+            "max:cgMark_var_none",
+            "max:cgWolf_baby_attributes",
+            "minecraft:wolf_tame"
+          ]
+        }
+      },
+
+
+      //-------------------
+      //Growing up code
+      //-------------------
+      "minecraft:ageable_grow_up": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "max:cgWolf_baby_attributes"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "minecraft:wolf_adult"
+              ]
+            }
+          },
+          {
+            "trigger": {
+              "filters":{ "test": "is_variant", "subject": "self", "value": 108 },
+              "event": "max:eGrow_into_1_8_adult",
+              "target": "self"
+            }
+          },
+          {
+            "trigger": {
+              "filters":{ "test": "is_variant", "subject": "self", "value": 110 },
+              "event": "max:eGrow_into_2_0_adult",
+              "target": "self"
+            }
+          }
+        ]
+      },
+
+
+      //Become Adult
+      "max:eGrow_into_1_8_adult": {
+        "remove": {
+          "component_groups": [
+            "max:cgWolf_baby_scale_1_8",
+            "max:cgWolf_baby_attributes"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgWolf_adult_scale_1_8",
+            "max:cgWolf_adult_attributes_1_8",
+            "minecraft:wolf_adult"
+          ]
+        }
+      },
+
+      "max:eGrow_into_2_0_adult": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "max:cgWolf_baby_scale_2_0",
+                "max:cgWolf_baby_attributes"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "max:cgWolf_adult_scale_2_0",
+                "max:cgWolf_adult_attributes_2_0",
+                "minecraft:wolf_adult"
+              ]
+            }
+          },
+          {
+            "filters": { "test": "has_component", "value": "minecraft:is_tamed"},
+            "add": {
+              "component_groups": [
+                "max:cgAlpha_standing_ride_controls",
+                "max:cgAlpha_standing_ride_seating"
+              ]
+            }
+          }
+        ]
+      },
+
+
+      "max:eEnter_love_state_as_var_1_8": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_1_8"
+          ]
+        }
+      },
+      "max:eEnter_love_state_as_var_2_0": {
+        "add": {
+          "component_groups": [
+            "max:cgShare_var_2_0"
+          ]
+        }
+      },
+
+      "max:eLeave_love_state": {
+        "remove": {
+          "component_groups": [
+            "max:cgShare_var_1_8",
+            "max:cgShare_var_2_0",
+            "max:cgMark_var_1_0",
+            "max:cgMark_var_1_2",
+            "max:cgMark_var_1_4",
+            "max:cgMark_var_1_6",
+            "max:cgMark_var_1_8",
+            "max:cgMark_var_2_0"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgMark_var_none"
+          ]
+        }
+      },
+
+
+
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        },
+        "randomize": [
+          //Baby
+          {
+            //"weight": 1,
+            "weight": 0,
+            "sequence": [
+              {
+                "add": {
+                  "component_groups": [
+                    "max:cgWolf_baby_attributes",
+                    "max:cgMark_var_none",
+                    "minecraft:wolf_wild"
+                  ]
+                }
+              },
+              {
+                "randomize": [
+                  {
+                    "weight": 2,
+                    //"weight": 0,
+                    "add": {
+                      "component_groups": [
+                        "max:cgWolf_var_1_8",
+                        "max:cgWolf_baby_scale_1_8",
+                        "max:cgNon_alpha_despawns"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "max:cgWolf_var_2_0",
+                        "max:cgWolf_baby_scale_2_0"
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          //Adult
+          {
+            "weight": 9,
+            //"weight": 0,
+            "sequence": [
+              {
+                "add": {
+                  "component_groups": [
+                    "minecraft:wolf_adult",
+                    "max:cgMark_var_none",
+                    "minecraft:wolf_wild"
+                  ]
+                }
+              },
+              {
+                "randomize": [
+                  {
+                    "weight": 2,
+                    "add": {
+                      "component_groups": [
+                        "max:cgWolf_var_1_8",
+                        "max:cgWolf_adult_scale_1_8",
+                        "max:cgWolf_adult_attributes_1_8",
+                        "max:cgNon_alpha_despawns"
+                      ]
+                    }
+                  },
+                  {
+                    "weight": 1,
+                    "add": {
+                      "component_groups": [
+                        "max:cgWolf_var_2_0",
+                        "max:cgWolf_adult_scale_2_0",
+                        "max:cgWolf_adult_attributes_2_0"/*,
+                        "max:howl_to_tame_wolves"*/
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+
+
+      //----------------------------------
+      // Sitting/Standing, Sprinting/Scooting, Rider/No Rider
+      //----------------------------------
+
+      //Standing vs Sitting
+      //-----------
+      "max:eStandingControls": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_controls"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_controls"
+          ]
+        }
+      },
+      "max:eStandingSeating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        }
+      },
+      "max:eSittingControls": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_controls"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_controls"
+          ]
+        }
+      },
+      "max:eSittingSeating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        }
+      },
+
+      //Rider vs No Rider
+      //-----------
+      "max:eHas_rider": {
+        "remove": {
+          "component_groups": [
+            "max:cgBehaviors_when_not_ridden"
+          ]
+        }
+      },
+
+      "max:eHas_no_rider": {
+        "add": {
+          "component_groups": [
+            "max:cgBehaviors_when_not_ridden"
+          ]
+        }
+      },
+
+      //Sprinting/Scooting
+      //-----------
+      //Sprinting
+      "max:eSprinting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        }
+      },
+      "max:eNot_sprinting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_standing_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+      "max:eSprint_mode_no_rider_remove_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        }
+      },
+      "max:eSprint_mode_no_rider_return_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed"
+          ]
+        }
+      },
+      "max:eSitting_in_sprint_mode_no_seating": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+      "max:eSitting_in_sprint_mode_return_seating": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sprinting_ride_seating"
+          ]
+        }
+      },
+
+      //Scooting
+      "max:eScoot_mode": {
+        "remove": {
+          "component_groups": [
+            "max:cgDefault_movement_speed",
+            "max:cgNon_scoot_mode_follow"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_controls",
+            "max:cgScooting_movement_speed"
+          ]
+        }
+      },
+      "max:eNot_scoot_mode": {
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_controls",
+            "max:cgScooting_movement_speed",
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgDefault_movement_speed",
+            "max:cgNon_scoot_mode_follow"
+          ]
+        }
+      },
+      "max:eScoot_mode_scooting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        }
+      },
+      "max:eScoot_mode_not_scooting": {
+        "add": {
+          "component_groups": [
+            "max:cgAlpha_sitting_ride_seating"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgAlpha_scooting_ride_seating"
+          ]
+        }
+      },
+      "max:eScoot_mode_no_rider_remove_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgScooting_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        }
+      },
+      "max:eScoot_mode_no_rider_return_movement": {
+        "remove": {
+          "component_groups": [
+            "max:cgNo_movement_speed"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgScooting_movement_speed"
+          ]
+        }
+      },
+
+      /*"max:spawn_and_join_pack": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "minecraft:wolf_adult",
+                "max:cgMark_var_none",
+                "max:wolf_wild_join_pack",
+                "max:wolf_var_1_6",
+                "max:wolf_adult_scale_1_6",
+                "max:wolf_adult_attributes_1_6",
+                "max:cgNon_alpha_despawns"
+              ]
+            }
+          }
+        ]
+      },*/
+
+      //================================
+      //================================
+
+      
+
+      "minecraft:ageable_set_baby": {
+        "remove": {
+          "component_groups": [
+            "minecraft:wolf_adult"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "max:cgWolf_baby_attributes"
+          ]
+        }
+      },
+
+      "minecraft:on_tame": {
+        "remove": {
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:wolf_tame",
+            "max:cgNon_scoot_mode_follow"
+          ]
+        }
+      },
+
+      "minecraft:become_angry": {
+        "remove": {
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:wolf_angry"
+          ]
+        }
+      },
+      "minecraft:on_calm": {
+        "remove": {
+          "component_groups": [
+            "minecraft:wolf_angry"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:wolf_wild"
+          ]
+        }
+      }
+    }
+  }
+}
